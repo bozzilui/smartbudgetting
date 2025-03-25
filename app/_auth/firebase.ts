@@ -8,12 +8,12 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCyjxgZtCB8J_oCiIsppOPDYQwUuUIVecE",
-  authDomain: "smartbudgetting.firebaseapp.com",
-  projectId: "smartbudgetting",
-  storageBucket: "smartbudgetting.appspot.com", // Fixed storage bucket URL
-  messagingSenderId: "137868999021",
-  appId: "1:137868999021:web:9edb13557cd7e0de1ac264"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "", // Fixed storage bucket URL
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Check if Firebase is not already initialized

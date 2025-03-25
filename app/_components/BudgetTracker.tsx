@@ -15,7 +15,7 @@ export default function BudgetTracker() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Budget Overview</Text>
+      <Text style={styles.title}>Budget Tracking</Text>
       {state.categories
         .filter((category) => category !== "Income")
         .map((category) => {
@@ -26,17 +26,27 @@ export default function BudgetTracker() {
           return (
             <View key={category} style={styles.budgetItem}>
               <View style={styles.headerRow}>
-                <Text style={styles.category}>{category}</Text>
-                <Text style={styles.amounts}>
-                  ${spent.toFixed(2)} / ${budget.toFixed(2)}
+                <View>
+                  <Text style={styles.category}>{category}</Text>
+                  <Text style={styles.amounts}>
+                    ${spent.toFixed(2)} of ${budget.toFixed(2)}
+                  </Text>
+                </View>
+                <Text
+                  style={[
+                    styles.percentage,
+                    progress > 0.9 ? styles.danger : styles.safe,
+                  ]}
+                >
+                  {Math.round(progress * 100)}%
                 </Text>
               </View>
               <Progress.Bar
                 progress={progress}
                 width={null}
-                height={10}
-                color={progress > 0.9 ? "#ff4444" : "#00C851"}
-                unfilledColor="#e0e0e0"
+                height={6}
+                color={progress > 0.9 ? "#EF4444" : "#10B981"}
+                unfilledColor="#2D2D2D"
                 borderWidth={0}
               />
             </View>
@@ -48,30 +58,45 @@ export default function BudgetTracker() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: "white",
-    borderRadius: 8,
+    padding: 20,
+    backgroundColor: "#1E1E1E",
+    borderRadius: 12,
     marginBottom: 16,
   },
   title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 16,
+    fontSize: 20,
+    fontWeight: "600",
+    color: "#FFFFFF",
+    marginBottom: 20,
+    letterSpacing: 0.5,
   },
   budgetItem: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   headerRow: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "flex-end",
     marginBottom: 8,
   },
   category: {
     fontSize: 16,
     fontWeight: "500",
+    color: "#FFFFFF",
+    marginBottom: 4,
   },
   amounts: {
     fontSize: 14,
-    color: "#666",
+    color: "#9CA3AF",
+  },
+  percentage: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  safe: {
+    color: "#10B981",
+  },
+  danger: {
+    color: "#EF4444",
   },
 });
